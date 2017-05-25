@@ -183,10 +183,11 @@
         <Component class="javax.swing.JTable" name="jTableTokens">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="0">
+              <Table columnCount="4" rowCount="0">
                 <Column editable="true" title="Token" type="java.lang.Object"/>
                 <Column editable="true" title="Lexema" type="java.lang.Object"/>
                 <Column editable="true" title="Linea" type="java.lang.Object"/>
+                <Column editable="true" title="Columna" type="java.lang.Object"/>
               </Table>
             </Property>
           </Properties>

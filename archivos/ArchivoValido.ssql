@@ -1,0 +1,33 @@
+Traer de nombrTabla.
+
+Traer de nombreTabla el nombre, apellido donde nombre sea igual a 
+"Juan" o nombre sea diferente a "Melisa".
+
+-- Este es un comentario--
+
+Traer de nombreTabla el nombre como nomuser, apellido agrupado por 
+nomuser.
+
+Traer de nombreTabla el nombre, edad donde edad este entre 17 y 35. 
+
+Traer de nombreTabla el nombre, edad donde edad no este entre 17 y 
+35.
+
+ 
+Traer de nombreTabla el nombre, edad donde edad sea {10,12,16}.
+
+Traer de nombreTabla el nombre, edad donde edad no se {10,12,16} 
+odenado por nomdre descendente y edad.
+ 
+Traer de nombreTabla y nombreTabla2 el nombre, edad, cargo donde
+nombreTabla->cargo sea igual a nombreTabla2->cargo.
+ 
+Ingresar en nombreTabla el nombre "Juan" y el apellido "Rios".
+ 
+Elimine en nombreTabla todo los datos.
+
+Elimine en nombreTabla los datos donde edad sea igual a 27. 
+
+Actualice en nombreTabla el nombre "Ricardo" donde cedula es igual
+a 124567. 
+333

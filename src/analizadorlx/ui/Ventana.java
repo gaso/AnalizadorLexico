@@ -108,7 +108,7 @@ public class Ventana extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Token", "Lexema", "Linea"
+                "Token", "Lexema", "Linea", "Columna"
             }
         ));
         jScrollPane2.setViewportView(jTableTokens);
@@ -233,7 +233,7 @@ public class Ventana extends javax.swing.JFrame {
 
     private void mGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mGuardarActionPerformed
         if (!cEditor.getText().isEmpty()) {
-           GuardarJFileChooser(false);
+            GuardarJFileChooser(false);
         } else {
             JOptionPane.showMessageDialog(null, "Editor vacio, para guardar un archivo debe escribir codigo!");
         }
@@ -287,31 +287,29 @@ public class Ventana extends javax.swing.JFrame {
     private void analizar() {
         if (permitirAnalizar) {
             
+            GuardarJFileChooser(false);
+
             //Borrar consola cuando se inicia el analisis 
             jTxtAreaErrores.setText("");
 
-            //Con Expresion Regular despreciar caracteres no requeridos por el analizador 
-            String cadenaTokens = cEditor.getText().replaceAll("\r\\n|\\r|\n", " ").trim();
-
             ArrayList<Token> analizado = GeneradorJFlex.analizarJFlex(rutaArchivo);
-            
+
             ArrayList<Token> tabla = new ArrayList<>();
             ArrayList<Token> error = new ArrayList<>();
-            
-            
-            for(Token t : analizado){
-                if( !t.getTipo().trim().equalsIgnoreCase("Espacio") 
-                        && !t.getTipo().trim().equalsIgnoreCase("No reconocido")){
+
+            for (Token t : analizado) {
+                if (!t.getTipo().trim().equalsIgnoreCase("Espacio")
+                        && !t.getTipo().trim().equalsIgnoreCase("No reconocido")) {
                     tabla.add(t);
                 }
-                
-                if ( t.getTipo().trim().equalsIgnoreCase("No reconocido")){
+
+                if (t.getTipo().trim().equalsIgnoreCase("No reconocido")) {
                     error.add(t);
                 }
             }
 
             for (Token token : error) {
-                jTxtAreaErrores.append("Error: " + token.getLexema() + " | no es un Lexema Valido - " + "Línea: " + token.getIndiceAnterior() + "\n");
+                jTxtAreaErrores.append("Error: " + token.getLexema() + " | no es un Lexema Valido - " + "Línea: " + token.getLinea() + "\n");
             }
             //Actualizar Tabla
             tokenTableModel.setTokens(tabla);
@@ -356,6 +354,9 @@ public class Ventana extends javax.swing.JFrame {
 
         boolean guarda = false;
 
+        //Fix: Si es primera vez que va a guardar.. que siempre pregunte donde
+        guardarComo = rutaArchivo.isEmpty() ? true : guardarComo;
+
         if (guardarComo) {
             JFileChooser fileChoser = new JFileChooser();
             fileChoser.setSelectedFile(new File("miSQLAnalisis_" + System.currentTimeMillis() + ".ssql"));
@@ -365,9 +366,9 @@ public class Ventana extends javax.swing.JFrame {
 
             if (null != nuevoArchivo) {
                 guarda = archivoManager.guardar(cEditor.getText(), nuevoArchivo);
-                actualizarRutasArchivo(nuevoArchivo);
-
                 if (guarda) {
+                    actualizarRutasArchivo(nuevoArchivo);
+                    permitirAnalizar = true;
                     JOptionPane.showMessageDialog(null, "Archivo guardado correctamente..");
                 } else {
                     JOptionPane.showMessageDialog(null, "El archivo no pudo guardarse.");
@@ -377,7 +378,9 @@ public class Ventana extends javax.swing.JFrame {
         } else {
             guarda = archivoManager.guardar(cEditor.getText(), new File(rutaArchivo));
             if (guarda) {
-                JOptionPane.showMessageDialog(null, "Archivo guardado correctamente.");
+                permitirAnalizar = true;
+                actualizarRutasArchivo(new File(rutaArchivo));
+                //JOptionPane.showMessageDialog(null, "Archivo guardado correctamente.");
             } else {
                 JOptionPane.showMessageDialog(null, "El archivo no pudo guardarse.");
             }
@@ -413,8 +416,5 @@ public class Ventana extends javax.swing.JFrame {
                 + "Carlitos Toro\n"
                 + "Gustavo Salgado");
     }
-
- 
-
 
 }

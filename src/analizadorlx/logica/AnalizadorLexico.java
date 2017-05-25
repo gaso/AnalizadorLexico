@@ -48,7 +48,7 @@ public class AnalizadorLexico {
                 token = extraerSiguienteToken(arregloString[x], i);
                 token1 = new Token(token.getLexema(), token.getTipo(), 0, x + 1);
                 vectorTokens.add(token1);
-                i = token.getIndiceSiguiente();
+                i = token.getLinea();
             }
             i = 0;
         }

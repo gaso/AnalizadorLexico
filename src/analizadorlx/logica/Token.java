@@ -38,32 +38,32 @@ public class Token {
     /**
      * Entero que representa en que linea esta el token
      */
-    private int linea;
+    private int lineaLegacy;
 
     /**
      * Entero que representa el indice del siguiente lexema
      */
-    private int indiceSiguiente;
+    private int linea;
 
     /**
      * Entero que representa el indice del anterior lexema
      */
-    private int indiceAnterior;
+    private int columna;
 
     /**
      * Metodo constructor de la clase Token
      *
      * @param lexema el lexema
      * @param tipo el tipo de token
-     * @param indiceSiguiente el indice siguiente del lexema
-     * @param indiceAnterior el indice anterior del lexema
+     * @param indiceSiguiente Linea
+     * @param indiceAnterior Columna
      */
     public Token(String lexema, String tipo, int indiceSiguiente, int indiceAnterior) {
         super();
         this.lexema = lexema;
         this.tipo = tipo;
-        this.indiceSiguiente = indiceSiguiente;
-        this.indiceAnterior = indiceAnterior;
+        this.linea = indiceSiguiente;
+        this.columna = indiceAnterior;
     }
 
     /**
@@ -72,7 +72,7 @@ public class Token {
      * @return cadena con la informacion del token
      */
     public String darDescripcion() {
-        return "Token: " + lexema + "     Tipo: " + tipo + "  Inicio: " + indiceAnterior + "  Fin: " + indiceSiguiente;
+        return "Token: " + lexema + "     Tipo: " + tipo + "  Inicio: " + columna + "  Fin: " + linea;
     }
 
     /**
@@ -89,8 +89,8 @@ public class Token {
      *
      * @return indice siguiente del lexema
      */
-    public int getIndiceSiguiente() {
-        return indiceSiguiente;
+    public int getLinea() {
+        return linea;
     }
 
     /**
@@ -98,8 +98,8 @@ public class Token {
      *
      * @return indice anterior del lexema
      */
-    public int getIndiceAnterior() {
-        return indiceAnterior;
+    public int getColumna() {
+        return columna;
     }
 
     /**
@@ -111,4 +111,10 @@ public class Token {
         return tipo;
     }
 
+    public void setLinea(int linea) {
+        this.linea = linea;
+    }
+
+    
+    
 }

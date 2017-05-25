@@ -5,12 +5,13 @@ package analizadorlx.logica;
 %type Token
 %line
 %column
+%ignorecase
 D= [0-9]
 L = [a-zA-Z]
 TL = "."
 SP = ","
 S = "_" | "{" | "}" | "-" | "<" | ">" | "!" | "°" | "|" | "¬" | "#" | "$" | "%" | "&" | "/" | "(" | ")" | "=" | "?" | "'" | "¡" | "¿" | "*" | "+" | "~" | "[" | "]" | "^" | "´"
-R =  "o" | "Traer" | "De" | "Donde" | "Sea" | "Igual" | "a" | "Diferente" | "Seleccionar" | "Agrupado" | "Por" | "Este" |  "Entre" | "y" | "No" | "Descendente" | "Ordenado" | "Ingresar" | "Elimine" | "Todos" | "Los" | "Datos" | "Actualice" | "En" | "El" | "Sumar" | "Restar" | "Multiplicar" | "Dividir"
+R =  "o" | "Traer" | "de" | "donde" | "sea" | "igual" | "a" | "diferente" | "seleccionar" | "agrupado" | "por" | "este" |  "entre" | "y" | "no" | "descendente" | "ordenado" | "Ingrese" | "Elimine" | "todos" | "los" | "datos" | "Actualice" | "en" | "el" 
 WHITE = [ \t\r\n]
 %{
 public String lexema;
@@ -24,7 +25,7 @@ public int column;
 {L}({L}|{D})* {lexema=yytext();  line=yyline; column=yycolumn ; return new Token(lexema, analizadorlx.logica.Token.IDENTIFICADOR, line, column) ;} 
 {D}?{D}* {lexema=yytext();  line=yyline; column=yycolumn ; return new Token(lexema, analizadorlx.logica.Token.ENTERO, line, column) ;}
 "\""[^*]~"\"" {lexema=yytext();  line=yyline; column=yycolumn ; return new Token(lexema, analizadorlx.logica.Token.CADENA, line, column);}
-"-->" {lexema=yytext();  line=yyline; column=yycolumn ; return new Token(lexema, analizadorlx.logica.Token.SIMBOLO, line, column) ;}
+"->" {lexema=yytext();  line=yyline; column=yycolumn ; return new Token(lexema, analizadorlx.logica.Token.SIMBOLO, line, column) ;}
 "--"[^*]~"--" {lexema=yytext();  line=yyline; column=yycolumn ; return new Token(lexema, analizadorlx.logica.Token.COMENTARIO, line, column);}
 "{" {lexema=yytext();  line=yyline; column=yycolumn ;  return new Token(lexema, analizadorlx.logica.Token.SIMBOLO, line, column);}
 "}" {lexema=yytext();  line=yyline; column=yycolumn ; return new Token(lexema, analizadorlx.logica.Token.SIMBOLO, line, column);}

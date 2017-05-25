@@ -23,7 +23,7 @@ public class TokenTableModel extends DefaultTableModel {
     /**
      * Arreglo de cadenas que guarda los tokens, el lexema y la línea
      */
-    private String[] columnas = {"Token", "Lexema", "Línea"};
+    private String[] columnas = {"Token", "Lexema", "Línea" , "Columna"};
 
     /**
      * Metodo constructor de la clase TokenTableModel
@@ -62,8 +62,10 @@ public class TokenTableModel extends DefaultTableModel {
             return token.getLexema();
         } else if (col == 1) {
             return token.getTipo();
+        } else if ( col == 2){
+            return token.getLinea();
         }
-        return token.getIndiceAnterior();
+        return token.getColumna();
     }
 
     /**

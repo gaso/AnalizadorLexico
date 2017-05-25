@@ -61,6 +61,8 @@ public class GeneradorJFlex {
                         return tokens;
                     }
                     
+                    token.setLinea(token.getLinea()+1);
+                    
                     tokens.add(token);
                     
                 } catch (IOException ex) {
