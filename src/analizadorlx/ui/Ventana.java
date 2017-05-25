@@ -1,15 +1,21 @@
 package analizadorlx.ui;
 
 import analizadorlx.logica.AnalizadorLexico;
+import analizadorlx.logica.GeneradorJFlex;
 import analizadorlx.logica.Token;
 import analizadorlx.utilidades.Archivos;
 import analizadorlx.utilidades.TokenTableModel;
 import java.awt.Color;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java_cup.Lexer;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -280,14 +286,14 @@ public class Ventana extends javax.swing.JFrame {
      */
     private void analizar() {
         if (permitirAnalizar) {
-
+            
             //Borrar consola cuando se inicia el analisis 
             jTxtAreaErrores.setText("");
 
             //Con Expresion Regular despreciar caracteres no requeridos por el analizador 
             String cadenaTokens = cEditor.getText().replaceAll("\r\\n|\\r|\n", " ").trim();
 
-            ArrayList<Token> analizado = analizador.extraerTokens(cEditor.getText().trim());
+            ArrayList<Token> analizado = GeneradorJFlex.analizarJFlex(rutaArchivo);
             
             ArrayList<Token> tabla = new ArrayList<>();
             ArrayList<Token> error = new ArrayList<>();
@@ -407,4 +413,8 @@ public class Ventana extends javax.swing.JFrame {
                 + "Carlitos Toro\n"
                 + "Gustavo Salgado");
     }
+
+ 
+
+
 }

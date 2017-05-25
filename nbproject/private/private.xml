@@ -3,6 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group/>
-        <group name="Otros_Proyectos"/>
+        <group name="Otros_Proyectos">
+            <file>file:/D:/Desarrollo/UQ/5/AnalizadorLx/src/analizadorlx/logica/GeneradorJFlex.java</file>
+            <file>file:/D:/Desarrollo/UQ/5/AnalizadorLx/src/analizadorlx/ui/Ventana.java</file>
+            <file>file:/D:/Desarrollo/UQ/5/AnalizadorLx/src/analizadorlx/RunAnalizador.java</file>
+            <file>file:/D:/Desarrollo/UQ/5/AnalizadorLx/src/analizadorlx/logica/TokenTipo.java</file>
+            <file>file:/D:/Desarrollo/UQ/5/AnalizadorLx/src/analizadorlx/logica/LexicoJFlexGenerado.java</file>
+            <file>file:/D:/Desarrollo/UQ/5/AnalizadorLx/src/analizadorlx/logica/Token.java</file>
+            <file>file:/D:/Desarrollo/UQ/5/AnalizadorLx/src/analizadorlx/logica/lexico.flex</file>
+            <file>file:/D:/Desarrollo/UQ/5/AnalizadorLx/src/analizadorlx/logica/AnalizadorLexico.java</file>
+        </group>
     </open-files>
 </project-private>
