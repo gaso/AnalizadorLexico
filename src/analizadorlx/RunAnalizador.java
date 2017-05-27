@@ -19,21 +19,28 @@ import javax.swing.UnsupportedLookAndFeelException;
  * @since 2017
  */
 public class RunAnalizador {
-    
-    
+
     private static final String PATH_FLEX = "src/analizadorlx/logica/lexico.flex";
+
+    private static boolean generarFlex = false;
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 try {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    if(GeneradorJFlex.generarLexer(PATH_FLEX)){
-                        new Ventana().setVisible(true);
+
+                    if (generarFlex) {
+                        if (GeneradorJFlex.generarLexer(PATH_FLEX)) {
+                            new Ventana().setVisible(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No se logro construir el Lenguaje para el Analizador , revise la configuracion de su archivo Flex", "Error Generando Lexico con JFlex", JOptionPane.ERROR_MESSAGE);
+                            System.exit(0);
+                        }
                     }else{
-                       JOptionPane.showMessageDialog(null, "No se logro construir el Lenguaje para el Analizador , revise la configuracion de su archivo Flex", "Error Generando Lexico con JFlex", JOptionPane.ERROR_MESSAGE);
-                       System.exit(0);
+                        new Ventana().setVisible(true);
                     }
+
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(RunAnalizador.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InstantiationException ex) {

@@ -3,15 +3,14 @@ package analizadorlx.logica;
 %%
 %class LexicoJFlexGenerado
 %type Token
-%line
+%line%ignorecase
 %column
-%ignorecase
 D= [0-9]
 L = [a-zA-Z]
 TL = "."
 SP = ","
 S = "_" | "{" | "}" | "-" | "<" | ">" | "!" | "°" | "|" | "¬" | "#" | "$" | "%" | "&" | "/" | "(" | ")" | "=" | "?" | "'" | "¡" | "¿" | "*" | "+" | "~" | "[" | "]" | "^" | "´"
-R =  "o" | "Traer" | "de" | "donde" | "sea" | "igual" | "a" | "diferente" | "seleccionar" | "agrupado" | "por" | "este" |  "entre" | "y" | "no" | "descendente" | "ordenado" | "Ingrese" | "Elimine" | "todos" | "los" | "datos" | "Actualice" | "en" | "el" 
+R =  "o" | "Traer" | "de" | "donde" | "sea" | "igual" | "a" | "diferente" | "agrupado" | "por" | "este" |  "entre" | "y" | "no" | "descendente" | "ascendente" |"ordenado" | "Ingresar" | "Elimine" | "todos" | "los" | "datos" | "Actualice" | "en" | "el" | "la" | "como" 
 WHITE = [ \t\r\n]
 %{
 public String lexema;
